@@ -62,8 +62,6 @@ namespace MazeGame.MazeGeneration
 
         private static List<RoomEntity> LayoutEntitiesAtRandom(EntityType entityType)
         {
-            // Random random = new Random();
-
             int health = 1;
             Count count = new Count(0, 0);
 
@@ -113,7 +111,6 @@ namespace MazeGame.MazeGeneration
 
         private static EntityPosition RandomPosition()
         {
-            // Random random = new Random();
             int randomIndex = Random.Range(0, _gridPositions.Count);
 
             EntityPosition randomPostion = _gridPositions[randomIndex];

@@ -82,9 +82,10 @@ namespace MazeGame
                 default:
                     break;
             }
-
+            
             _entities[index].Initialize(entity.Position);
             _entities[index].entityProperties.maxHealth = entity.Health;
+            _entities[index].gameObject.SetActive(entity.Active);
         }
 
         private void ClearRoom()

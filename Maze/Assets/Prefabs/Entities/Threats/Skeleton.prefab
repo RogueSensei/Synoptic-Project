@@ -97,4 +97,4 @@ MonoBehaviour:
   entityProperties:
     name: Skeleton
     maxHealth: 0
-    roomId: 0
+    isHostile: 1

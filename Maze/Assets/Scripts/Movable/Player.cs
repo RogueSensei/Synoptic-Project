@@ -18,23 +18,24 @@ namespace MazeGame.Entities
         private void OnTriggerEnter2D(Collider2D collision)
         {
             string tag = collision.tag;
+            GameManager gameManager = FindObjectOfType<GameManager>();
             switch (tag)
             {
                 case "Treasure":
                     wealth += 10;
                     collision.gameObject.SetActive(false);
+                    gameManager.UpdateWealthText();
+                    gameManager.UpdateRoomEntity(collision.gameObject.transform.position.x, collision.gameObject.transform.position.y);
                     break;
                 case "Exit":
                     if (!isMoving)
                     {
-                        GameManager gameManager = FindObjectOfType<GameManager>();
                         Exit exit = collision.gameObject.GetComponent<Exit>();
 
                         gameManager.DisablePlayerInput();
 
                         ExitPosition roomDirection = exit.exitPosition.GetOpposite();
 
-                        //EnterRoom(roomDirection);
                         this.gameObject.SetActive(false);
                         gameManager.EnterRoom(roomDirection, exit.exitRoomId);
                     }
@@ -67,6 +68,7 @@ namespace MazeGame.Entities
 
         public void RegisterAction(PlayerAction action)
         {
+            GameManager gameManager = FindObjectOfType<GameManager>();
             int horizontal = 0;
             int vertical = 0;
 
@@ -95,6 +97,9 @@ namespace MazeGame.Entities
             isMoving = true;
             AttemptMove<Entity>(horizontal, vertical);
             isMoving = false;
+
+            if(gameManager.gameState == GameState.TurnInProgress)
+                gameManager.gameState = GameState.EnemyTurn;
         }
 
         public void SetLocation(float x, float y)
@@ -104,10 +109,24 @@ namespace MazeGame.Entities
 
         protected override void OnCantMove<T>(T component)
         {
-            Debug.Log("Can't move");
+            Entity entity = component as Entity;
+            GameManager gameManager = FindObjectOfType<GameManager>();
+
+            switch(entity.entityProperties.name)
+            {
+                case "Rock":
+                    // gameManager.gameState = GameState.PlayerTurn;
+                    break;
+                case "Trap":
+                    wealth -=5;
+                    gameManager.UpdateWealthText();
+                    break;
+                default:
+                    break;
+            }
         }
     }
-
+    
     public enum PlayerAction
     {
         None,
