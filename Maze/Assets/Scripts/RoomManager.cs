@@ -11,6 +11,7 @@ namespace MazeGame
         public Wall wallPrefab;
         public Exit exitPrefab;
         public Rock rockPrefab;
+        public Coin coinPrefab;
         public Treasure treasurePrefab;
         public Trap trapPrefab;
         public Zombie zombiePrefab;
@@ -19,6 +20,7 @@ namespace MazeGame
         private List<Wall> _walls = new List<Wall>();
         private List<Exit> _exits = new List<Exit>();
         private List<Entity> _entities = new List<Entity>();
+        private List<CoinByRoom> _coinsByRoom = new List<CoinByRoom>();
 
         public void InterpretRoom(Room room)
         {
@@ -33,6 +35,39 @@ namespace MazeGame
                     LayoutEntity(room.Entities[i], i);
                 }
             }
+
+            foreach (CoinByRoom coinByRoom in _coinsByRoom)
+            {
+                Coin roomCoin = Instantiate(coinPrefab) as Coin;
+                
+                roomCoin.Initialize(new EntityPosition 
+                {
+                    x = coinByRoom.PositionX,
+                    y = coinByRoom.PositionY
+                });
+
+                _entities.Add(roomCoin);
+            }
+        }
+
+        public void AddCoin(int roomId, float xPosition, float yPosition)
+        {
+            Coin coin = Instantiate(coinPrefab) as Coin;
+            
+            coin.Initialize(new EntityPosition 
+            {
+                x = xPosition,
+                y = yPosition
+            });
+
+            _entities.Add(coin);
+
+            _coinsByRoom.Add(new CoinByRoom
+            {
+                RoomId = roomId,
+                PositionX = xPosition,
+                PositionY = yPosition
+            });
         }
 
         private void LayoutWalls(RoomExit[] exits)
@@ -66,6 +101,7 @@ namespace MazeGame
                     _entities.Add(Instantiate(rockPrefab) as Rock);
                     break;
                 case EntityType.Coin:
+                    _entities.Add(Instantiate(coinPrefab) as Coin);
                     break;
                 case EntityType.Treasure:
                     _entities.Add(Instantiate(treasurePrefab) as Treasure);

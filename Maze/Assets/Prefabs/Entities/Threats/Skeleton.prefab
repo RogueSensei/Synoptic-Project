@@ -96,5 +96,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityProperties:
     name: Skeleton
-    maxHealth: 0
+    maxHealth: 10
     isHostile: 1

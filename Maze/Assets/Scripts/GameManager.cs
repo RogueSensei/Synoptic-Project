@@ -47,7 +47,19 @@ namespace MazeGame
                     break;
                 case GameState.PlayerTurn:
                     if (_inputActions.Player.enabled && !_player.isMoving)
-                        _player.RegisterAction(InterpretPlayerAction());
+                    {
+                        var playerAction = InterpretPlayerAction();
+
+                        if(playerAction == PlayerAction.DropCoin)
+                        {
+                            Debug.Log("Coin drop");
+                            DropCoin(_player.transform.position.x, _player.transform.position.y);
+                        }
+                        else
+                        {
+                            _player.RegisterAction(playerAction);
+                        }
+                    }
                     break;
                 case GameState.EnemyTurn:
                     if(CheckForEnemies())
@@ -153,6 +165,13 @@ namespace MazeGame
             entity.Active = false;
         }
 
+        public void DropCoin(float xPosition, float yPosition)
+        {
+            _roomManager.AddCoin(currentRoomId, xPosition, yPosition);
+
+            gameState = GameState.EnemyTurn;
+        }
+
         public void EnablePlayerInput()
         {
             _inputActions.Enable();
@@ -217,6 +236,11 @@ namespace MazeGame
             {
                 gameState = GameState.TurnInProgress;
                 return PlayerAction.MoveWest;
+            }
+            else if (playerInput.Drop.triggered)
+            {
+                gameState = GameState.TurnInProgress;
+                return PlayerAction.DropCoin;
             }
             else
             {
