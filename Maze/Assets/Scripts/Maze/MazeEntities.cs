@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MazeGame.MazeGeneration
 {
@@ -25,6 +27,8 @@ namespace MazeGame.MazeGeneration
         public static RoomEntity[] GenerateRoomEntities()
         {
             List<RoomEntity> newEntities = new List<RoomEntity>();
+
+            Debug.Log("Generating room entities");
 
             InitializeList();
 
@@ -58,7 +62,7 @@ namespace MazeGame.MazeGeneration
 
         private static List<RoomEntity> LayoutEntitiesAtRandom(EntityType entityType)
         {
-            Random random = new Random();
+            // Random random = new Random();
 
             int health = 1;
             Count count = new Count(0, 0);
@@ -89,7 +93,7 @@ namespace MazeGame.MazeGeneration
                     break;
             }
 
-            int entityCount = random.Next(count.minimum, count.maximum + 1);
+            int entityCount = Random.Range(count.minimum, count.maximum + 1);
 
             List<RoomEntity> entities = new List<RoomEntity>();
 
@@ -109,8 +113,8 @@ namespace MazeGame.MazeGeneration
 
         private static EntityPosition RandomPosition()
         {
-            Random random = new Random();
-            int randomIndex = random.Next(0, _gridPositions.Count);
+            // Random random = new Random();
+            int randomIndex = Random.Range(0, _gridPositions.Count);
 
             EntityPosition randomPostion = _gridPositions[randomIndex];
             _gridPositions.RemoveAt(randomIndex);
