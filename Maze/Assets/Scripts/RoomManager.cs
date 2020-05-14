@@ -36,7 +36,7 @@ namespace MazeGame
                 }
             }
 
-            foreach (CoinByRoom coinByRoom in _coinsByRoom)
+            foreach (CoinByRoom coinByRoom in _coinsByRoom.Where(x => x.RoomId == room.RoomId))
             {
                 Coin roomCoin = Instantiate(coinPrefab) as Coin;
                 

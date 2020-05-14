@@ -1,4 +1,4 @@
 ﻿namespace MazeGame.Entities
 {
-    public class Trap : Threat { }
+    public class Trap : Entity { }
 }

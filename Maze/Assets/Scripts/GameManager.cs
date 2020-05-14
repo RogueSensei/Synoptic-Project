@@ -16,6 +16,7 @@ namespace MazeGame
         public Text roomText;
         public int currentRoomId;
         public GameState gameState = GameState.None;
+        public List<Threat> enemies = new List<Threat>();
 
         private Maze _maze;
         private List<Room> _rooms;
@@ -52,7 +53,6 @@ namespace MazeGame
 
                         if(playerAction == PlayerAction.DropCoin)
                         {
-                            Debug.Log("Coin drop");
                             DropCoin(_player.transform.position.x, _player.transform.position.y);
                         }
                         else
@@ -104,6 +104,8 @@ namespace MazeGame
 
         public void EnterRoom(ExitPosition exitPosition, int roomId)
         {
+            enemies.Clear();
+
             int wealth = _player.wealth;
             Destroy(_player.gameObject);
 
@@ -167,6 +169,9 @@ namespace MazeGame
 
         public void DropCoin(float xPosition, float yPosition)
         {
+            _player.wealth -= 1;
+            UpdateWealthText();
+
             _roomManager.AddCoin(currentRoomId, xPosition, yPosition);
 
             gameState = GameState.EnemyTurn;
@@ -210,7 +215,12 @@ namespace MazeGame
 
         private void EnemyTurn()
         {
-            Debug.Log("Let's go baby");
+           foreach (var enemy in enemies)
+            {
+                enemy.MoveThreat();
+            }
+
+            gameState = GameState.PlayerTurn;
         }
 
         private PlayerAction InterpretPlayerAction()

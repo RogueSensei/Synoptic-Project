@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4663265894913593065}
   - component: {fileID: 6299648014291173410}
   - component: {fileID: 5961366845618139831}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -148,3 +148,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   wealth: 0
+  isMoving: 0
