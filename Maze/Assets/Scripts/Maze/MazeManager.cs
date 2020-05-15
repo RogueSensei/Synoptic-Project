@@ -40,8 +40,18 @@ namespace MazeGame.MazeGeneration
             }
             else
             {
-                Debug.LogError($"File was not found: {path}");
+                Debug.LogWarning($"File was not found: {path}");
                 return null;
+            }
+        }
+
+        public static void DeleteMaze()
+        {
+            string path = $"{Application.persistentDataPath}/maze.json";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
             }
         }
     }

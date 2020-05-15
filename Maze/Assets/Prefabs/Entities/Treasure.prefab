@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 1
   m_Sprite: {fileID: 57347999071926559, guid: 52108d591cf80774c9242a8dc299ddec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   entityProperties:
     name: Treasure
     maxHealth: 0
+    isHostile: 0
 --- !u!61 &5718971761076391747
 BoxCollider2D:
   m_ObjectHideFlags: 0

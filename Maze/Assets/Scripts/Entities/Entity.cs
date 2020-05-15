@@ -16,11 +16,6 @@ namespace MazeGame.Entities
             this.name = $"{entityProperties.name} ({location.x}, {location.y})";
         }
 
-        public void RegisterAttack()
-        {
-
-        }
-
         public Vector2 GetLocation()
         {
             return this.transform.position;
@@ -42,5 +37,6 @@ namespace MazeGame.Entities
     {
         public string name;
         public int maxHealth;
+        public bool isHostile;
     }
 }

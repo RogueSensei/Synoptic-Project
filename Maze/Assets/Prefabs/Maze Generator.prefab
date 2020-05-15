@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa3cdc54dc3c214baeb8fa5afc0a5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfRooms: 8
+  numberOfRooms: 12

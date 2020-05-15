@@ -1,11 +1,19 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - MazeGame.Entities.Coin
     - MazeGame.Entities.Player
     - MazeGame.Entities.Rock
+    - MazeGame.Entities.Skeleton
+    - MazeGame.Entities.Trap
+    - MazeGame.Entities.Treasure
+    - MazeGame.Entities.Zombie
+    - MazeGame.Exit
     - MazeGame.GameManager
+    - MazeGame.MainMenu
     - MazeGame.MazeGeneration.MazeGenerator
     - MazeGame.RoomManager
+    - MazeGame.Wall
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
@@ -32,8 +40,12 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.UI.dll:
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/Maze.unity:
+    Assets/Scenes/Main Menu.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -48,27 +60,104 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
-    - Class: 50
-      Script: {instanceID: 0}
-    - Class: 61
-      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 570}
+      Script: {instanceID: 574}
     - Class: 114
-      Script: {instanceID: 11202}
+      Script: {instanceID: 11158}
     - Class: 114
-      Script: {instanceID: 12130}
+      Script: {instanceID: 11388}
+    - Class: 114
+      Script: {instanceID: 12216}
+    - Class: 114
+      Script: {instanceID: 13226}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 156049354
+      Script: {instanceID: 0}
+    - Class: 483693784
+      Script: {instanceID: 0}
+    - Class: 1839735485
+      Script: {instanceID: 0}
+    Assets/Scenes/Maze.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 574}
+    - Class: 114
+      Script: {instanceID: 11158}
+    - Class: 114
+      Script: {instanceID: 11176}
+    - Class: 114
+      Script: {instanceID: 11208}
+    - Class: 114
+      Script: {instanceID: 11388}
+    - Class: 114
+      Script: {instanceID: 11680}
+    - Class: 114
+      Script: {instanceID: 11690}
+    - Class: 114
+      Script: {instanceID: 11850}
     - Class: 114
       Script: {instanceID: 12144}
     - Class: 114
-      Script: {instanceID: 13298}
+      Script: {instanceID: 12158}
     - Class: 114
-      Script: {instanceID: 13578}
+      Script: {instanceID: 12228}
+    - Class: 114
+      Script: {instanceID: 13226}
+    - Class: 114
+      Script: {instanceID: 13318}
+    - Class: 114
+      Script: {instanceID: 13370}
+    - Class: 114
+      Script: {instanceID: 13602}
+    - Class: 114
+      Script: {instanceID: 13718}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -77,6 +166,12 @@ ScriptsOnlyBuild:
     - Class: 212
       Script: {instanceID: 0}
     - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
     - Class: 156049354
       Script: {instanceID: 0}
@@ -93,13 +188,19 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
+      Hash: 70fe4d79ea1a78e7ba49718b13cc4b12
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MazeGame.Entities
+    className: Treasure
+  - hash:
+      serializedVersion: 2
       Hash: 3c08375166df118bd1801438fc36b92f
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SelectionCaret
   - hash:
       serializedVersion: 2
-      Hash: 90e195cf9978f43e7a6166224535111f
+      Hash: 70fe4d79ea1a78e7ba49718b13cc4b12
     assemblyName: Assembly-CSharp.dll
     namespaceName: MazeGame.Entities
     className: Rock
@@ -255,6 +356,18 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
+      Hash: 03e1a932fcbdd20178d131fef3c1c8e5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MazeGame.Entities
+    className: Skeleton
+  - hash:
+      serializedVersion: 2
+      Hash: 03e1a932fcbdd20178d131fef3c1c8e5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MazeGame.Entities
+    className: Zombie
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -283,6 +396,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Mask
+  - hash:
+      serializedVersion: 2
+      Hash: 70fe4d79ea1a78e7ba49718b13cc4b12
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MazeGame.Entities
+    className: Coin
   - hash:
       serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
@@ -333,12 +452,6 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 90e195cf9978f43e7a6166224535111f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: MazeGame.Entities
-    className: Entity
-  - hash:
-      serializedVersion: 2
       Hash: e3a9d5756f1162dd7720942841561275
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem
@@ -351,7 +464,7 @@ ScriptsOnlyBuild:
     className: InputSettings
   - hash:
       serializedVersion: 2
-      Hash: 744dd0b12ca55da2db021cb721f7cd7c
+      Hash: 7311553c126a68060318eedf182a6cd3
     assemblyName: Assembly-CSharp.dll
     namespaceName: MazeGame
     className: GameManager
@@ -375,10 +488,22 @@ ScriptsOnlyBuild:
     className: InputActionImporterEditor
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MazeGame
+    className: MainMenu
+  - hash:
+      serializedVersion: 2
       Hash: 287a4aa7392bcfb309b4d7b4dc89eb3c
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem.Editor
     className: PlayerInputEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 70fe4d79ea1a78e7ba49718b13cc4b12
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MazeGame.Entities
+    className: Trap
   - hash:
       serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
@@ -543,6 +668,12 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
+      Hash: 03e1a932fcbdd20178d131fef3c1c8e5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MazeGame.Entities
+    className: Threat
+  - hash:
+      serializedVersion: 2
       Hash: 76aef43e801605d1829c8805eeee135c
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem
@@ -573,10 +704,16 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: d42dbdd062c3498446375a686ed5a9b4
     assemblyName: Assembly-CSharp.dll
     namespaceName: MazeGame.Entities
     className: Player
+  - hash:
+      serializedVersion: 2
+      Hash: df157d6c591409bb3ad4a263cbfb00a5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MazeGame
+    className: Exit
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -615,7 +752,7 @@ ScriptsOnlyBuild:
     className: PlayModeRunnerCallback
   - hash:
       serializedVersion: 2
-      Hash: 12b9ba0919bc1df607e38be47bdea8c5
+      Hash: 1911b53a51a745c30ee26d0576114ff5
     assemblyName: Assembly-CSharp.dll
     namespaceName: MazeGame
     className: RoomManager
@@ -669,6 +806,12 @@ ScriptsOnlyBuild:
     className: StandaloneInputModule
   - hash:
       serializedVersion: 2
+      Hash: a4996221ebf02c72e7bf20961450f860
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MazeGame
+    className: Wall
+  - hash:
+      serializedVersion: 2
       Hash: aa88ae22474df55295327e4ee99e5a24
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -711,5 +854,6 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 5
   scenePathNames:
+  - Assets/Scenes/Main Menu.unity
   - Assets/Scenes/Maze.unity
-  playerPath: C:/Users/Chris Evans/Desktop/Build Test/Maze Game.exe
+  playerPath: D:/QA/Project/Synoptic-Project/Maze Build/Maze Game.exe
