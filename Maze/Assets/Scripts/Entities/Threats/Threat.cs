@@ -21,13 +21,12 @@ namespace MazeGame.Entities
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _inverseMoveTime = 1f / moveTime;
 
-            _player = FindObjectOfType<Player>();
-
             gameManager.enemies.Add(this);
         }
 
         public void MoveThreat()
         {
+            _player = FindObjectOfType<Player>();
             int xDirection = 0;
             int yDirection = 0;
 

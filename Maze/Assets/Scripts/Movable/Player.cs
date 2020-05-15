@@ -1,5 +1,6 @@
 ﻿using MazeGame.MazeGeneration;
 using MazeGame.Moving;
+using System.Collections;
 using UnityEngine;
 
 namespace MazeGame.Entities
@@ -8,6 +9,7 @@ namespace MazeGame.Entities
     {
         public int wealth;
         public bool isMoving;
+        public float coolDown;
 
         private void Awake()
         {
@@ -99,7 +101,18 @@ namespace MazeGame.Entities
             isMoving = false;
 
             if(gameManager.gameState == GameState.TurnInProgress)
-                gameManager.gameState = GameState.EnemyTurn;
+            {
+                StartCoroutine(Wait());
+            }
+        }
+
+        private IEnumerator Wait()
+        {
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            
+            gameManager.DisablePlayerInput();
+            yield return new WaitForSeconds(coolDown);
+            gameManager.gameState = GameState.EnemyTurn;
         }
 
         public void SetLocation(float x, float y)

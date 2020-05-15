@@ -149,3 +149,4 @@ MonoBehaviour:
     m_Bits: 256
   wealth: 0
   isMoving: 0
+  coolDown: 0.5

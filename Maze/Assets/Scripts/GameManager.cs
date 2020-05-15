@@ -1,9 +1,11 @@
 ﻿using MazeGame.Entities;
 using MazeGame.MazeGeneration;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MazeGame
@@ -14,6 +16,7 @@ namespace MazeGame
         public MazeGenerator mazeGeneratorPrebab;
         public Text wealthText;
         public Text roomText;
+        public Text winText;
         public int currentRoomId;
         public GameState gameState = GameState.None;
         public List<Threat> enemies = new List<Threat>();
@@ -66,6 +69,7 @@ namespace MazeGame
                     {
                         EnemyTurn();
                     }
+                    EnablePlayerInput();
                     gameState = GameState.PlayerTurn;
                     break;
                 case GameState.TurnInProgress:
@@ -95,6 +99,15 @@ namespace MazeGame
             _player.name = "Player";
         }
 
+        private IEnumerator EndGame()
+        {
+            yield return new WaitForSeconds(3);
+
+            winText.text = "";
+
+            SceneManager.LoadScene(0);
+        }
+
         public void SpawnPlayer()
         {
             _player.SetLocation(.5f, .5f);
@@ -104,6 +117,7 @@ namespace MazeGame
 
         public void EnterRoom(ExitPosition exitPosition, int roomId)
         {
+            gameState = GameState.None;
             enemies.Clear();
 
             int wealth = _player.wealth;
@@ -111,8 +125,8 @@ namespace MazeGame
 
             if (_maze.ExitRoomId == roomId)
             {
-                Debug.Log("You win!");
-                Debug.Log($"Wealth: {wealth}");
+                winText.text = $"You found the exit and acquired {wealth} Wealth!";
+                StartCoroutine(EndGame());
             }
             else
             {
@@ -251,6 +265,11 @@ namespace MazeGame
             {
                 gameState = GameState.TurnInProgress;
                 return PlayerAction.DropCoin;
+            }
+            else if (playerInput.Escape.triggered)
+            {
+                SceneManager.LoadScene(0);
+                return PlayerAction.None;
             }
             else
             {
