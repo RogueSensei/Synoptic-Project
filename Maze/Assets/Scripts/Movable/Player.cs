@@ -147,6 +147,7 @@ namespace MazeGame.Entities
         MoveEast,
         MoveSouth,
         MoveWest,
-        DropCoin
+        DropCoin,
+        Escape
     }
 }

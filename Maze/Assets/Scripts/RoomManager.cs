@@ -124,7 +124,7 @@ namespace MazeGame
             _entities[index].gameObject.SetActive(entity.Active);
         }
 
-        private void ClearRoom()
+        public void ClearRoom()
         {
             if (_walls.Count() > 0)
             {

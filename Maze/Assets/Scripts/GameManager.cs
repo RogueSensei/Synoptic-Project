@@ -58,6 +58,12 @@ namespace MazeGame
                         {
                             DropCoin(_player.transform.position.x, _player.transform.position.y);
                         }
+                        else if(playerAction == PlayerAction.Escape)
+                        {
+                            Destroy(_player.gameObject);
+                            winText.text = "You escaped";
+                            StartCoroutine(EndGame());
+                        }
                         else
                         {
                             _player.RegisterAction(playerAction);
@@ -104,6 +110,8 @@ namespace MazeGame
             yield return new WaitForSeconds(3);
 
             winText.text = "";
+
+            _roomManager.ClearRoom();
 
             SceneManager.LoadScene(0);
         }
@@ -268,8 +276,8 @@ namespace MazeGame
             }
             else if (playerInput.Escape.triggered)
             {
-                SceneManager.LoadScene(0);
-                return PlayerAction.None;
+                gameState = GameState.None;
+                return PlayerAction.Escape;
             }
             else
             {
